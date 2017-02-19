@@ -13,13 +13,13 @@ public class Solution_8_4 {
 			strs.add(s);
 			return strs;
 		}		
-		String sLast = s.substring(0, s.length() - 1);
-		List<String> strsLast = perm(sLast);
-		String pre = null, post = null;
+		
+		List<String> strsLast = perm(s.substring(0, s.length() - 1));
 		for (String str : strsLast) {
-			for (int i = -1; i < str.length(); i++) {
-				pre = i >= 0 ? str.substring(0, i + 1) : "";
-				post = i < str.length() - 1 ? str.substring(i + 1, str.length()) : "";
+			String pre = null, post = null;
+			for (int i = 0; i <= str.length(); i++) {
+				pre = i > 0 ? str.substring(0, i) : "";
+				post = i < str.length() ? str.substring(i, str.length()) : "";
 				strs.add(pre + s.charAt(s.length() - 1) + post);
 			}
 		}
